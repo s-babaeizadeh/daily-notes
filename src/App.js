@@ -1,24 +1,24 @@
 import React, { Component } from "react"
-import AddTodo from "./components/AddTodo"
-import Todos from "./components/Todos"
+import AddNotes from "./components/AddNotes"
+import Notes from "./components/Notes"
 
 class App extends Component {
   state = {
-    todos: [
+    notes: [
       { id: 1, content: "Reading Book" },
       { id: 2, content: "Codding" },
     ],
   }
 
-  addTodo = (todo) => {
-    todo.id = Math.random()
-    let todos = [...this.state.todos, todo]
-    this.setState({ todos })
+  addNote = (note) => {
+    note.id = Math.random()
+    let notes = [...this.state.notes, note]
+    this.setState({ notes })
   }
 
-  deleteTodo = (id) => {
-    const todos = this.state.todos.filter((todo) => todo.id !== id)
-    this.setState({ todos })
+  deleteNote = (id) => {
+    const notes = this.state.notes.filter((note) => note.id !== id)
+    this.setState({ notes })
   }
   render() {
     return (
@@ -29,8 +29,8 @@ class App extends Component {
         >
           Daily Notes
         </h1>
-        <Todos todos={this.state.todos} deleteTodo={this.deleteTodo} />
-        <AddTodo addTodo={this.addTodo} />
+        <Notes notes={this.state.notes} deleteNote={this.deleteNote} />
+        <AddNotes addNote={this.addNote} />
       </div>
     )
   }
